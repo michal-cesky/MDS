@@ -6,24 +6,26 @@ public class MapClass {
 
 
     public void store(Integer id, String value){
-
-        try {
-            map.put(1, "10");
-            map.put(2, "20");
-            map.put(3, "30");
-            map.put(4, "40");
-
-        } catch (ArrayStoreException e) {
-            System.out.println("Chyba id je jiy v mape . " + e.getMessage());
-        }
+        map.put(id, value);
     }
 
-    public String getValue(Integer id){
-        try {
-            map.get(1);
+    public String getValue(Integer id) {
+        String value = map.get(id);
+        return value;
+    }
 
-        } catch (NoSuchFieldException e) {
-            System.out.println("Chyba id je jiy v mape . " + e.getMessage());
+    public void deleteKey(Integer id){
+        map.remove(id);
+    }
+
+    public int getSize(){
+       int size = map.size();
+       return size;
+    }
+
+    public void print(){
+        for (Integer key: map.keySet()){
+            System.out.println(key +"->"+map.get(key));
         }
     }
 }

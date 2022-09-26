@@ -8,6 +8,8 @@ public class Main {
 
         MapClass map = new MapClass();
 
+        System.out.println("List");
+
         try {
             treti = new MyClass(1, 2, 3, 4, 5, 6);
 
@@ -31,6 +33,29 @@ public class Main {
 
         System.out.println(united);
 
+        System.out.println("\nHASHMAP");
 
+        try {
+            map.store(1, "10");
+            map.store(2, "100");
+        } catch (ArrayStoreException e){
+            System.out.println("Chyba . " + e.getMessage());
+        }
+
+        try {
+           System.out.println("Hodnota id 1 je: " + map.getValue(1));
+        } catch (ArrayStoreException e){
+            System.out.println("Chyba . " + e.getMessage());
+        }
+
+        try {
+            map.deleteKey(2);
+        } catch (ArrayStoreException e){
+            System.out.println("Chyba . " + e.getMessage());
+        }
+
+        System.out.println("Pocet prvku je: " + map.getSize());
+
+        map.print();
     }
 }

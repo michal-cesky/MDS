@@ -62,11 +62,11 @@ public class MyClass implements ISum {
 
     @Override
     public String toString (){
-        return "Seznam o velikosti " + List.size() + "se souctem " + sum();
+        return "Seznam o velikosti " + List.size() + " se souctem " + sum();
     }
 
     public void print(){
-        System.out.print("Seznam (" + List.size() + ") ");
+        System.out.print("Seznam (" + List.size() + ") \n");
 
         for (int i: List){
             System.out.println(i + " ");
