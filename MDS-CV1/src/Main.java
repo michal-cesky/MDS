@@ -33,7 +33,7 @@ public class Main {
 
         System.out.println(united);
 
-        System.out.println("\nHASHMAP");
+        System.out.println("\nHASHMAP");    //exception nefungujou
 
         try {
             map.store(1, "10");
