@@ -1,0 +1,12 @@
+.name {
+    color: red;
+    font-style: italic;
+    font-weight: normal;
+}
+
+.welcome {
+    font-size: 70px;
+    background: -webkit-linear-gradient(#012FFF, #9456FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

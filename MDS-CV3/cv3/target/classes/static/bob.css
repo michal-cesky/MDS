@@ -1,0 +1,12 @@
+.name {
+    color: green;
+    text-decoration: underline green;
+    font-weight: normal;
+}
+
+.welcome {
+    font-size: 70px;
+    background: -webkit-linear-gradient(#012FFF, #9456FF);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+}
