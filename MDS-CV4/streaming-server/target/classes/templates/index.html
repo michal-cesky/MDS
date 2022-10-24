@@ -1,0 +1,31 @@
+<!DOCTYPE html><!-- DOCTYPE html -->
+<html lang="cs">
+<head>
+  <meta charset="UTF-8"/>
+  <script type="text/javascript" th:src="@{/js/dash.all.debug.js}"></script>
+  <title>Index</title>
+</head>
+<body>
+
+<form method='post' action='player'>
+  <label for="url"> URL addres</label>
+  <input type='text' name='url' id="url"/><br>
+
+  <label for="width"> Width</label>
+  <input type='text' name='width' id="width" value="1000" /><br>
+
+  <input type="checkbox" name="muted" value="true" id="muted">
+  <input type="hidden" name="muted">
+  <label for="muted"> Muted</label><br>
+
+  <input type="checkbox" name="autoplay" value="true" id="autoplay">
+  <input type="hidden" name="autoplay" value="false">
+  <label for="autoplay"> Autoplay</label><br>
+
+  <input type="hidden" name="poster" value="https://raw.githubusercontent.com/ENeMy235/MDS/main/Screen2.jpg">
+
+  <input type='submit' value='Play'/>
+</form>
+
+</body>
+</html>
