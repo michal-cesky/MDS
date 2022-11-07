@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="cs" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Galerie dostupných filmů</title>
+</head>
+<body>
+<table class="table">
+
+    <tr>
+        <th class="name">Michal Český 320789</th>
+    </tr>
+
+    <tbody>
+    <tr th:each="movie: ${library}">
+        <td><a th:href="@{'GalleryVideo/'+${movie.getFile_name()}}">
+            <img th:src="@{'images/'+${movie.getImage_name()}}"></a></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

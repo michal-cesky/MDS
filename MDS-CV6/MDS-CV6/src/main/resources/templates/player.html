@@ -1,0 +1,20 @@
+<!DOCTYPE html><!-- DOCTYPE html -->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="description" content="Streaming MPEG-DASH">
+    <title>Media Player</title>
+</head>
+<body>
+
+<div th:if= "${error != null}">
+    <h1 th:text="${error}" style="color: red;"></h1>
+</div>
+
+<div th:if= "${url != null}">
+    <video th:src="${url}" th:poster="${poster}" th:width="${width}" th:attrappend="muted=${muted}" th:autoplay="${autoplay}" controls="true"></video>
+</div>
+
+
+</body>
+</html>

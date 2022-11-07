@@ -1,0 +1,26 @@
+<!DOCTYPE html><!-- DOCTYPE html -->
+<html lang="cs">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Index</title>
+</head>
+<body>
+
+<form>
+<button type="submit" formaction="/byterange">Local MP4 video</button>
+<button type="submit" formaction="/VideoURL">URL video</button>
+</form>
+
+<form method='post' action='dashplayer'>
+  <button name="url" type="submit" formaction="/dashPlayer" value="https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd">Dash URL video</button>
+  <button name="url" type="submit" formaction="/dashPlayer" value="http://localhost:8080/dash/manifest.mpd" >Local Dash stream</button>
+  <button name="url" type="submit" formaction="/dashPlayer" value="http://localhost:8080/hls/playlist.m3u8" >Local HLS stream</button>
+</form>
+
+<form>
+  <button type="submit" formaction="/Gallery">Gallery</button>
+</form>
+
+
+</body>
+</html>
