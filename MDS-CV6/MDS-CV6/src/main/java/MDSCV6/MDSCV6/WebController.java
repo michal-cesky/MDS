@@ -20,6 +20,7 @@ import static MDSCV6.MDSCV6.FilePaths.*;
 @Controller
 public class WebController {
 
+    //pro dash-stream
     private MyResorceshttpRequestHandler handler;
 
     @Autowired
@@ -27,7 +28,10 @@ public class WebController {
         this.handler = handler;
     }
 
-
+    @GetMapping("/video")
+    public String video() {
+        return "videoMP4stream";
+    }
 
     //http://localhost:8080/index
     @GetMapping("index")
@@ -35,11 +39,13 @@ public class WebController {
         return "index";
     }
 
+    //video URL s player nastavenim bez dash-stream
     @GetMapping("VideoURL")
     public String VideoURL() {
         return "VideoURL";
     }
 
+    //pro URL s dash-stream
     @RequestMapping(value="dashPlayer", method={RequestMethod.GET, RequestMethod.POST})
     public String Dashstrema(@RequestParam String url, Model model){
         if(!StringUtils.isEmpty(url)) {
@@ -50,15 +56,21 @@ public class WebController {
         return "dashPlayer";
     }
 
-    //http://localhost:8080/byterange
+    //local video s dash-stream
     @GetMapping("byterange")
     public void byterange(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute(MyResorceshttpRequestHandler.ATTR_FILE, MP4_FILE) ;
         handler.handleRequest(request, response);
     }
 
+    //nastaveni parametru
     @RequestMapping(value="player", method={RequestMethod.POST})
-    public String player(@RequestParam String url, @RequestParam String width, @RequestParam String autoplay, @RequestParam String muted, @RequestParam String poster, Model model){
+    public String player(@RequestParam String url,
+                         @RequestParam String muted,
+                         @RequestParam(defaultValue = "false") boolean autoplay,
+                         @RequestParam(defaultValue = "1000") String width,
+                         @RequestParam String poster,
+                         Model model){
         if(!StringUtils.isEmpty(url)) {
             model.addAttribute("url", url);
             model.addAttribute("width", width);
@@ -71,6 +83,7 @@ public class WebController {
         return "player";
     }
 
+    //vyber typu souboru
     @RequestMapping(value = {"/dash/{file}", "/hls/{file}", "/hls/{quality}/{file}"}, method={RequestMethod.GET, RequestMethod.POST})
     public void adaptive_streaming(
             @PathVariable("file") String file,
@@ -100,13 +113,30 @@ public class WebController {
         handler.handleRequest(request, response);
     }
 
+    //pouze pro soubor dash
+    /*@RequestMapping(value = "dashPlayer", method = {RequestMethod.POST})
+    public String dashPlayer(Model model, @RequestParam String url) {
+        model.addAttribute("url", url);
+
+        //Type pro vyřešení problémů při přehrávání non dash streamů s controls
+        String type = "stream";
+        if (url.contains(".mpd")) type = "stream";
+        else if (url.contains("hls")) type = "hls";
+        else type = "video";
+
+        model.addAttribute("type", type);
+        return "dashPlayer";
+    }*/
+
+    //show video
     @RequestMapping(value = {"/GalleryVideo/{file}"}, method = RequestMethod.GET)
     public String showVideo(@PathVariable("file") String file, Model model) throws IOException {
         model.addAttribute("file", file);
         return "GalleryVideo";
     }
 
-    @RequestMapping(value = "/getvideo/{file}", method = RequestMethod.GET)
+    //ziskani videa
+    @GetMapping(value = "/getvideo/{file}")
     public void getVideo(@PathVariable("file") String name, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -114,9 +144,10 @@ public class WebController {
         handler.handleRequest(request, response);
     }
 
+    //zobrazeni videi v galerii
     private MovieLibrary library = null;
 
-    @RequestMapping(value = "/Gallery", method = RequestMethod.GET)
+    @GetMapping(value = "/Gallery")
     public String Gallery(Model model) throws IOException, JCodecException {
 
         if (library == null){
