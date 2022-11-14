@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" th:src="@{/js/dash.all.debug.js}"></script>
+
+    <link rel="stylesheet" href="css/myStyle.css" type="text/css">
+    <title>Project - 230789</title>
+</head>
+<body>
+
+<h1>Michal Český</h1>
+
+
+<form method='post' action='video'>
+    <label for="url"> URL addres</label>
+    <input type='text' name='url' id="url"/><br>
+
+    <label for="height"> Width</label>
+    <input type='text' name='height' id="height" /><br>
+
+    <input type='submit' value='Play'/>
+</form>
+
+<form>
+    <button type="submit" formaction="/videocollection">Gallery</button>
+</form>
+
+
+</body>
+</html>

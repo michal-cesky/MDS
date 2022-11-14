@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="cs" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>Videos</h1>
+<table>
+    <tr th:each="movie: ${library}">
+        <td>
+            <a th:href="@{'player/'+${movie}}">
+                <p th:text="${movie}"></p>
+            </a>
+        </td>
+        <br>
+    </tr>
+</table>
+</body>
+</html>
